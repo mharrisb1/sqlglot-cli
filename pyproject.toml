@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "sqlglot-cli"
+version = "0.1.0"
+description = "CLI wrapper around sqlglot"
+authors = ["Michael Harris <mharris@definite.app>"]
+packages = [{ include = "app" }]
+readme = "README.md"
+
+[tool.poetry.scripts]
+sqlglot-cli = "app.main:cli"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sqlglot = "^25.28.0"
+sqlglotrs = "^0.2.13"
+typer = "^0.12.5"
+rich = "^13.9.3"
+
+[tool.poetry.extras]
+rs = ["sqlglotrs"]
+rich = ["rich"]
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+mypy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+exclude = [".venv"]
+venvPath = "."
+venv = ".venv"
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+reportMissingTypeStubs = false
+reportUnusedImport = "error"
+reportPrivateUsage = "none"
+reportWildcardImportFromLibrary = "none"
